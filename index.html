@@ -175,13 +175,16 @@
         `;
         
         // Send user message to server and receive response
-        fetch('https://airyx.vercel.app/api/openai', {
+        fetch('https://api.openai.com/v1/completions', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer sk-proj-9VqHONylbMwzqKyHyseoT3BlbkFJjnd7tZyku2zMhdPfdMww'
             },
             body: JSON.stringify({
-                prompt: userInput
+                model: 'text-davinci-003',
+                prompt: userInput,
+                max_tokens: 150
             })
         })
         .then(response => response.json())
